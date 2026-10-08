@@ -1,5 +1,5 @@
 {
-  "$schema": "rules.schema.json",
+  "$schema": "rules.schema.ja.json",
   "version": 1,
   "rules": [
     {

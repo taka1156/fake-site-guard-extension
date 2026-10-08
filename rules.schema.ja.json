@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ドメインなりすまし検知ルール",
+  "description": "正当なサービスになりすましている可能性のあるドメインを特定するための、バージョン管理されたルールのコレクション。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "rules"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "このルールファイルを検証するために使用される JSON Schema への URI リファレンス。"
+    },
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "ルールファイル形式のバージョン。"
+    },
+    "rules": {
+      "type": "array",
+      "description": "なりすましの可能性のあるドメイン名を特定するために使用される検知ルール。",
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "description": "不審なドメインパターンと、それになりすまされている可能性のある正当なドメインを記述するルール。",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "pattern",
+        "legitimateDomain",
+        "date",
+        "category"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "検知ルールのための、小文字とハイフンで区切られた一意の識別子。"
+        },
+        "pattern": {
+          "type": "string",
+          "minLength": 1,
+          "format": "regex",
+          "description": "なりすましの可能性のあるドメイン名に一致させるために使用される正規表現。"
+        },
+        "legitimateDomain": {
+          "type": "string",
+          "minLength": 1,
+          "format": "hostname",
+          "description": "不審なドメインがなりすましている可能性のある正当なドメイン名。"
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "ルールが追加された、または最後に更新された日付（YYYY-MM-DD 形式）。"
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1,
+          "description": "開発、金融、ショッピングなどの正当なサービスのカテゴリ。"
+        },
+        "note": {
+          "type": "string",
+          "description": "なりすましの手法や、ルールが対象とする脅威に関する、オプションの追加のコンテキスト。"
+        }
+      }
+    }
+  }
+}
