@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Domain Impersonation Detection Rules",
+  "description": "A versioned collection of rules for identifying domains that may impersonate legitimate services.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "rules"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri-reference",
+      "description": "A URI reference to the JSON Schema used to validate this rules file."
+    },
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "The version of the rules file format."
+    },
+    "rules": {
+      "type": "array",
+      "description": "Detection rules used to identify potentially impersonating domain names.",
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "description": "A rule describing a suspicious domain pattern and the legitimate domain it may impersonate.",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "pattern",
+        "legitimateDomain",
+        "date",
+        "category"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "A unique, lowercase, hyphen-separated identifier for the detection rule."
+        },
+        "pattern": {
+          "type": "string",
+          "minLength": 1,
+          "format": "regex",
+          "description": "A regular expression used to match potentially impersonating domain names."
+        },
+        "legitimateDomain": {
+          "type": "string",
+          "minLength": 1,
+          "format": "hostname",
+          "description": "The legitimate domain name that the suspicious domain may be impersonating."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date the rule was added or last updated, in YYYY-MM-DD format."
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The category of the legitimate service, such as development, finance, or shopping."
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional additional context about the impersonation technique or threat addressed by the rule."
+        }
+      }
+    }
+  }
+}

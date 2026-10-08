@@ -1,0 +1,230 @@
+{
+  "$schema": "rules.schema.json",
+  "version": 1,
+  "rules": [
+    {
+      "id": "dev-github",
+      "pattern": "g[i1]thub-|githu6|gihub|github-(login|auth|verify)",
+      "legitimateDomain": "github.com",
+      "date": "2026-10-08",
+      "category": "開発",
+      "note": "GitHub のログイン情報・トークン窃取系"
+    },
+    {
+      "id": "dev-gitlab",
+      "pattern": "g[i1]tlab-|gitlab-(login|auth|verify)",
+      "legitimateDomain": "gitlab.com",
+      "date": "2026-10-08",
+      "category": "開発"
+    },
+    {
+      "id": "dev-npm",
+      "pattern": "npmjs-|npm-js|npmis|nmpjs|npmjs\\.(top|xyz|cc)$",
+      "legitimateDomain": "www.npmjs.com",
+      "date": "2026-10-08",
+      "category": "開発",
+      "note": "npm の偽サイト(公開トークン窃取など)"
+    },
+    {
+      "id": "dev-aws",
+      "pattern": "aws-(login|signin|console)|amazonaws-|amaz0naws",
+      "legitimateDomain": "signin.aws.amazon.com",
+      "date": "2026-10-08",
+      "category": "開発",
+      "note": "AWS コンソールの偽ログイン"
+    },
+    {
+      "id": "dev-docker",
+      "pattern": "dockerhub-|d0cker|docker-(login|hub)\\.",
+      "legitimateDomain": "hub.docker.com",
+      "date": "2026-10-08",
+      "category": "開発"
+    },
+    {
+      "id": "shop-amazon",
+      "pattern": "amaz0n|arnazon|amazonn|amazon-(co|jp|login|security)",
+      "legitimateDomain": "www.amazon.co.jp",
+      "date": "2026-10-08",
+      "category": "ショッピング",
+      "note": "Amazon 風の偽ドメイン"
+    },
+    {
+      "id": "shop-rakuten",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:(?:rakuten|rakuten-card|rakuten-bank|rakuten-sec)\\.co\\.jp|rakuten\\.ne\\.jp)$).*(rakutan|rakuter|rakuuten|raku-ten|rakuten-(login|security|support|jp|co|id|point)|rakuten\\.(top|xyz|cc|vip)$)",
+      "legitimateDomain": "www.rakuten.co.jp",
+      "date": "2026-10-08",
+      "category": "ショッピング",
+      "note": "楽天市場・楽天ID。公式ドメイン配下は除外する正規表現"
+    },
+    {
+      "id": "shop-mercari",
+      "pattern": "mercar[1l]|rnercari|mercari-(login|jp|support)",
+      "legitimateDomain": "jp.mercari.com",
+      "date": "2026-10-08",
+      "category": "ショッピング"
+    },
+    {
+      "id": "shop-yahoo",
+      "pattern": "yahooo|yah00|yahoo-(shopping|japan|login)",
+      "legitimateDomain": "shopping.yahoo.co.jp",
+      "date": "2026-10-08",
+      "category": "ショッピング"
+    },
+    {
+      "id": "ent-netflix",
+      "pattern": "netf[1l]ix|nettflix|netflix-(login|billing|jp|support)",
+      "legitimateDomain": "www.netflix.com",
+      "date": "2026-10-08",
+      "category": "エンタメ",
+      "note": "支払い情報更新を装うパターンが多い"
+    },
+    {
+      "id": "ent-spotify",
+      "pattern": "sp0tify|spotiffy|spotify-(login|premium|billing)",
+      "legitimateDomain": "www.spotify.com",
+      "date": "2026-10-08",
+      "category": "エンタメ"
+    },
+    {
+      "id": "ent-disneyplus",
+      "pattern": "disneyp[1l]us|disneyplus-|disney-plus",
+      "legitimateDomain": "www.disneyplus.com",
+      "date": "2026-10-08",
+      "category": "エンタメ"
+    },
+    {
+      "id": "ent-steam",
+      "pattern": "steamcommunnity|steamcommunity-|stearn|steam-(gift|login|trade)",
+      "legitimateDomain": "steamcommunity.com",
+      "date": "2026-10-08",
+      "category": "エンタメ",
+      "note": "ギフト・トレード詐欺"
+    },
+    {
+      "id": "ent-youtube",
+      "pattern": "youtub3|y0utube|youtube-(login|premium|verify)",
+      "legitimateDomain": "www.youtube.com",
+      "date": "2026-10-08",
+      "category": "エンタメ"
+    },
+    {
+      "id": "pay-paypal",
+      "pattern": "paypa1|paypai|paypal-|paypa[l1]\\.(top|xyz|cc|vip)$",
+      "legitimateDomain": "www.paypal.com",
+      "date": "2026-10-08",
+      "category": "決済"
+    },
+    {
+      "id": "pay-paypay",
+      "pattern": "paypay-|paypai\\.|paypary|paypay\\.(top|xyz|cc|vip)$",
+      "legitimateDomain": "paypay.ne.jp",
+      "date": "2026-10-08",
+      "category": "決済"
+    },
+    {
+      "id": "pay-stripe",
+      "pattern": "str[1i]pe-|stripe-(login|billing|verify)",
+      "legitimateDomain": "dashboard.stripe.com",
+      "date": "2026-10-08",
+      "category": "決済"
+    },
+    {
+      "id": "fin-mufg",
+      "pattern": "mufq|mufg-.*\\.(top|xyz|cc|vip)$",
+      "legitimateDomain": "www.bk.mufg.jp",
+      "date": "2026-10-08",
+      "category": "金融",
+      "note": "三菱UFJ銀行を装うフィッシング"
+    },
+    {
+      "id": "fin-smbc",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:smbc\\.co\\.jp|smbc-card\\.com|smbcnikko\\.co\\.jp|smtb\\.jp)$).*(srnbc|smbc-?bank|smbc[-.]?(login|secure|security|support|olive)|smbc-.*\\.(top|xyz|cc|vip)$|smbc\\.(top|xyz|cc|vip)$)",
+      "legitimateDomain": "www.smbc.co.jp",
+      "date": "2026-10-08",
+      "category": "金融",
+      "note": "三井住友銀行(Olive含む)"
+    },
+    {
+      "id": "fin-mizuho",
+      "pattern": "rnizuho|mizuho-.*\\.(top|xyz|cc|vip)$",
+      "legitimateDomain": "www.mizuhobank.co.jp",
+      "date": "2026-10-08",
+      "category": "金融"
+    },
+    {
+      "id": "fin-jppost",
+      "pattern": "yuucho|yucho-.*\\.(top|xyz|cc|vip)$",
+      "legitimateDomain": "www.jp-bank.japanpost.jp",
+      "date": "2026-10-08",
+      "category": "金融",
+      "note": "ゆうちょ銀行を装うフィッシング"
+    },
+    {
+      "id": "fin-sbi",
+      "pattern": "s8i|sbi-.*\\.(top|xyz|cc|vip)$|sbisec-",
+      "legitimateDomain": "www.sbisec.co.jp",
+      "date": "2026-10-08",
+      "category": "金融"
+    },
+    {
+      "id": "pay-rakuten-card",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:(?:rakuten|rakuten-card|rakuten-bank|rakuten-sec)\\.co\\.jp|rakuten\\.ne\\.jp)$).*(rakuten-?card|rakutencard)",
+      "legitimateDomain": "www.rakuten-card.co.jp",
+      "date": "2026-10-08",
+      "category": "決済",
+      "note": "楽天カード(e-NAVI)のフィッシング"
+    },
+    {
+      "id": "pay-rakuten-pay",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:(?:rakuten|rakuten-card|rakuten-bank|rakuten-sec)\\.co\\.jp|rakuten\\.ne\\.jp)$).*rakuten-?pay",
+      "legitimateDomain": "pay.rakuten.co.jp",
+      "date": "2026-10-08",
+      "category": "決済"
+    },
+    {
+      "id": "fin-rakuten-bank",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:(?:rakuten|rakuten-card|rakuten-bank|rakuten-sec)\\.co\\.jp|rakuten\\.ne\\.jp)$).*(rakuten-?bank|rakutenbank)",
+      "legitimateDomain": "www.rakuten-bank.co.jp",
+      "date": "2026-10-08",
+      "category": "金融"
+    },
+    {
+      "id": "fin-rakuten-sec",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:(?:rakuten|rakuten-card|rakuten-bank|rakuten-sec)\\.co\\.jp|rakuten\\.ne\\.jp)$).*(rakuten-?sec|rakutensec|rakuten-?securities)",
+      "legitimateDomain": "www.rakuten-sec.co.jp",
+      "date": "2026-10-08",
+      "category": "金融"
+    },
+    {
+      "id": "tel-rakuten-mobile",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:(?:rakuten|rakuten-card|rakuten-bank|rakuten-sec)\\.co\\.jp|rakuten\\.ne\\.jp)$).*rakuten-?mobile",
+      "legitimateDomain": "network.mobile.rakuten.co.jp",
+      "date": "2026-10-08",
+      "category": "通信"
+    },
+    {
+      "id": "pay-smbc-card",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:smbc\\.co\\.jp|smbc-card\\.com|smbcnikko\\.co\\.jp|smtb\\.jp)$).*(smbc-?card|srnbc-?card|mitsui-?sumitomo-?card|vpass-)",
+      "legitimateDomain": "www.smbc-card.com",
+      "date": "2026-10-08",
+      "category": "決済",
+      "note": "三井住友カード(Vpass)のフィッシング"
+    },
+    {
+      "id": "fin-smbc-nikko",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:smbc\\.co\\.jp|smbc-card\\.com|smbcnikko\\.co\\.jp|smtb\\.jp)$).*(smbc-?nikko|srnbcnikko)",
+      "legitimateDomain": "www.smbcnikko.co.jp",
+      "date": "2026-10-08",
+      "category": "金融",
+      "note": "SMBC日興証券"
+    },
+    {
+      "id": "fin-smtb",
+      "pattern": "^(?!(?:[a-z0-9-]+\\.)*(?:smbc\\.co\\.jp|smbc-card\\.com|smbcnikko\\.co\\.jp|smtb\\.jp)$).*(smtb-.*\\.(top|xyz|cc|vip)$|smtb-(login|secure|security)|sumitomo-?mitsui-?trust)",
+      "legitimateDomain": "www.smtb.jp",
+      "date": "2026-10-08",
+      "category": "金融",
+      "note": "三井住友信託銀行"
+    }
+  ]
+}

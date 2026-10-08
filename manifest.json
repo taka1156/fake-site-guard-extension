@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Fake Site Guard",
+  "version": "1.0.0",
+  "description": "JSON定義のパターンで偽サイトに似たドメインを検知し、正しいドメインをそっと知らせます。",
+  "permissions": ["storage", "tabs", "alarms", "notifications"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Fake Site Guard",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

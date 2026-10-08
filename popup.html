@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <nav class="tabs">
+    <button class="tab active" data-tab="now">現在のサイト</button>
+    <button class="tab" data-tab="rules">ルール <span id="ruleCount" class="count"></span></button>
+    <button class="tab" data-tab="io">入出力</button>
+  </nav>
+
+  <div id="staleBanner" class="banner stale" hidden></div>
+
+  <section id="tab-now" class="pane">
+    <div id="nowStatus"></div>
+  </section>
+
+  <section id="tab-rules" class="pane" hidden>
+    <div class="row">
+      <select id="catFilter"></select>
+      <button id="toggleAdd" class="small">＋ 追加</button>
+    </div>
+    <form id="addForm" hidden>
+      <label>正規表現(ホスト名に対して判定)
+        <input id="fPattern" placeholder="paypa1|paypal-" required></label>
+      <label>正解ドメイン(完全一致)
+        <input id="fDomain" placeholder="paypal.com" required></label>
+      <div class="row">
+        <label class="grow">カテゴリ(自由入力)
+          <input id="fCategory" list="catList" placeholder="payment"></label>
+        <label>確認日
+          <input id="fDate" type="date" required></label>
+      </div>
+      <datalist id="catList"></datalist>
+      <button type="submit" class="primary">ルールを追加</button>
+    </form>
+    <ul id="ruleList" class="rules"></ul>
+
+    <h3 class="section-title">正しいサイトとして登録したホスト <span id="trustedCount" class="count"></span></h3>
+    <ul id="trustedList" class="rules"></ul>
+  </section>
+
+  <section id="tab-io" class="pane" hidden>
+    <h3>エクスポート / インポート</h3>
+    <div class="row">
+      <button id="btnExport">JSONを書き出す</button>
+      <button id="btnFile">ファイルから読込</button>
+      <input id="fileInput" type="file" accept=".json,application/json" hidden>
+    </div>
+
+    <h3>URLからベースJSONを取り込む</h3>
+    <div class="row">
+      <input id="urlInput" class="grow" type="url" placeholder="https://example.com/rules.json">
+      <button id="btnUrl">取込</button>
+    </div>
+    <div id="sourceInfo" class="hint"></div>
+
+    <h3>JSONを貼り付けて取り込む</h3>
+    <textarea id="pasteArea" rows="4" placeholder='{"rules":[...]}'></textarea>
+    <button id="btnPaste">貼り付けを取込</button>
+
+    <label class="check"><input id="replaceMode" type="checkbox"> 取込時に既存ルールを置き換える(OFFならidで統合)</label>
+    <div id="ioMessage" class="hint"></div>
+  </section>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
