@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Domain Impersonation Detection Rules",
-  "description": "A versioned collection of rules for identifying domains that may impersonate legitimate services.",
+  "title": "ドメインなりすまし検知ルール",
+  "description": "正当なサービスになりすましている可能性のあるドメインを特定するための、バージョン管理されたルールのコレクション。",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -12,16 +12,16 @@
     "$schema": {
       "type": "string",
       "format": "uri-reference",
-      "description": "A URI reference to the JSON Schema used to validate this rules file."
+      "description": "このルールファイルを検証するために使用される JSON Schema への URI リファレンス。"
     },
     "version": {
       "type": "integer",
       "const": 1,
-      "description": "The version of the rules file format."
+      "description": "ルールファイル形式のバージョン。"
     },
     "rules": {
       "type": "array",
-      "description": "Detection rules used to identify potentially impersonating domain names.",
+      "description": "なりすましの可能性のあるドメイン名を特定するために使用される検知ルール。",
       "items": {
         "$ref": "#/$defs/rule"
       }
@@ -30,7 +30,7 @@
   "$defs": {
     "rule": {
       "type": "object",
-      "description": "A rule describing a suspicious domain pattern and the legitimate domain it may impersonate.",
+      "description": "不審なドメインパターンと、それになりすまされている可能性のある正当なドメインを記述するルール。",
       "additionalProperties": false,
       "required": [
         "id",
@@ -44,33 +44,33 @@
           "type": "string",
           "minLength": 1,
           "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-          "description": "A unique, lowercase, hyphen-separated identifier for the detection rule."
+          "description": "検知ルールのための、小文字とハイフンで区切られた一意の識別子。"
         },
         "pattern": {
           "type": "string",
           "minLength": 1,
           "format": "regex",
-          "description": "A regular expression used to match potentially impersonating domain names."
+          "description": "なりすましの可能性のあるドメイン名に一致させるために使用される正規表現。"
         },
         "legitimateDomain": {
           "type": "string",
           "minLength": 1,
           "format": "hostname",
-          "description": "The legitimate domain name that the suspicious domain may be impersonating."
+          "description": "不審なドメインがなりすましている可能性のある正当なドメイン名。"
         },
         "date": {
           "type": "string",
           "format": "date",
-          "description": "The date the rule was added or last updated, in YYYY-MM-DD format."
+          "description": "ルールが追加された、または最後に更新された日付（YYYY-MM-DD 形式）。"
         },
         "category": {
           "type": "string",
           "minLength": 1,
-          "description": "The category of the legitimate service, such as development, finance, or shopping."
+          "description": "開発、金融、ショッピングなどの正当なサービスのカテゴリ。"
         },
         "note": {
           "type": "string",
-          "description": "Optional additional context about the impersonation technique or threat addressed by the rule."
+          "description": "なりすましの手法や、ルールが対象とする脅威に関する、オプションの追加のコンテキスト。"
         }
       }
     }
